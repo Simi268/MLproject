@@ -1,12 +1,6 @@
-pandas
+flask
 numpy
-seaborn
-matplotlib
+pandas
 scikit-learn
-catboost
-xgboost
-Flask
-dill
 gunicorn
-
--e .
+dill

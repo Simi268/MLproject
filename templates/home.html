@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Exam Performance Indicator</title>
+    <title>Student Performance Predictor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea, #764ba2);
             min-height: 100vh;
             display: flex;
@@ -18,31 +21,77 @@
             justify-content: center;
         }
 
-        .card {
-            border-radius: 16px;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #2d2d2d;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 24px;
         }
 
         .form-label {
             font-weight: 500;
         }
 
-        .title {
-            font-weight: 700;
-            color: #333;
-        }
-
-        .subtitle {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
         .btn-primary {
-            background-color: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             border: none;
+            padding: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            background-color: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            border-radius: 18px;
+            padding: 24px;
+            margin-top: 28px;
+            text-align: center;
+            animation: popIn 0.4s ease;
+        }
+
+        .result-box h1 {
+            font-size: 3rem;
+            color: #1b4332;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: #eee;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
@@ -51,26 +100,30 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10">
+        <div class="col-lg-9 col-md-11">
 
-            <div class="card shadow p-4">
+            <div class="glass-card">
 
                 <!-- Header -->
                 <div class="text-center mb-4">
-                    <h2 class="title">Student Exam Performance Indicator</h2>
+                    <h1>🎓 Student Performance Predictor</h1>
                     <p class="subtitle">
-                        Predict a student's <strong>Maths score</strong> using demographic and academic inputs
+                        AI-powered prediction of <strong>Maths score</strong><br>
+                        using academic & demographic insights
                     </p>
                 </div>
 
                 <!-- Form -->
                 <form action="/predictdata" method="post">
 
+                    <h6 class="section-title">Student Information</h6>
+                    <hr>
+
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Gender</label>
                             <select class="form-select" name="gender" required>
-                                <option selected disabled value="">Select Gender</option>
+                                <option disabled selected>Select Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -79,7 +132,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Race / Ethnicity</label>
                             <select class="form-select" name="ethnicity" required>
-                                <option selected disabled value="">Select Ethnicity</option>
+                                <option disabled selected>Select Ethnicity</option>
                                 <option value="group A">Group A</option>
                                 <option value="group B">Group B</option>
                                 <option value="group C">Group C</option>
@@ -91,9 +144,9 @@
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Parental Level of Education</label>
+                            <label class="form-label">Parental Education</label>
                             <select class="form-select" name="parental_level_of_education" required>
-                                <option selected disabled value="">Select Education</option>
+                                <option disabled selected>Select Education</option>
                                 <option value="associate's degree">Associate's Degree</option>
                                 <option value="bachelor's degree">Bachelor's Degree</option>
                                 <option value="high school">High School</option>
@@ -106,53 +159,61 @@
                         <div class="col-md-6">
                             <label class="form-label">Lunch Type</label>
                             <select class="form-select" name="lunch" required>
-                                <option selected disabled value="">Select Lunch Type</option>
+                                <option disabled selected>Select Lunch Type</option>
                                 <option value="free/reduced">Free / Reduced</option>
                                 <option value="standard">Standard</option>
                             </select>
                         </div>
                     </div>
 
+                    <h6 class="section-title">Academic Scores</h6>
+                    <hr>
+
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Test Preparation Course</label>
                             <select class="form-select" name="test_preparation_course" required>
-                                <option selected disabled value="">Select Course</option>
+                                <option disabled selected>Select Course</option>
                                 <option value="none">None</option>
                                 <option value="completed">Completed</option>
                             </select>
                         </div>
 
                         <div class="col-md-3">
-                            <label class="form-label">Reading Score</label>
+                            <label class="form-label">📘 Reading Score</label>
                             <input type="number" class="form-control" name="reading_score"
-                                   placeholder="0 - 100" min="0" max="100" required>
+                                   min="0" max="100" placeholder="0 - 100" required>
                         </div>
 
                         <div class="col-md-3">
-                            <label class="form-label">Writing Score</label>
+                            <label class="form-label">✍️ Writing Score</label>
                             <input type="number" class="form-control" name="writing_score"
-                                   placeholder="0 - 100" min="0" max="100" required>
+                                   min="0" max="100" placeholder="0 - 100" required>
                         </div>
                     </div>
 
                     <div class="d-grid mt-4">
                         <button type="submit" class="btn btn-primary btn-lg">
-                            Predict Maths Score
+                            Get Maths Score Prediction
                         </button>
                     </div>
 
                 </form>
 
-                <!-- Prediction Result -->
+                <!-- Result -->
                 {% if results %}
-                <div class="alert alert-success text-center mt-4">
-                    <h5 class="mb-1">Predicted Maths Score</h5>
-                    <h2 class="fw-bold">{{ results }}</h2>
+                <div class="result-box">
+                    <h5>Predicted Maths Score</h5>
+                    <h1>{{ results }} / 100</h1>
+                    <p class="mb-0">Model-based academic performance estimation</p>
                 </div>
                 {% endif %}
 
             </div>
+
+            <footer>
+                © 2025 · Student Performance Predictor · Flask & Machine Learning
+            </footer>
 
         </div>
     </div>
