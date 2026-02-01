@@ -6,6 +6,7 @@ The project covers the entire ML lifecycle — from data ingestion and model tra
 🌐 Live Demo:👉 https://student-performance-predictor-ephw.onrender.com
 
 📌 Problem Statement
+
 Predict a student’s Maths score using:
 Gender
 Race / Ethnicity
@@ -18,6 +19,7 @@ Writing score
 This problem is treated as a regression task.
 
 🧠 Solution Overview
+
 The application follows industry-standard ML engineering practices:
 Modular ML pipeline
 Separate training and inference workflows
@@ -26,40 +28,10 @@ Flask-based web interface
 Dockerized deployment
 Cloud hosting on Render
 
-🏗️ Project Architecture
-MLproject/
-│
-├── artifacts/                  # Saved model & preprocessor
-│   ├── model.pkl
-│   ├── preprocessor.pkl
-│
-├── src/
-│   ├── components/             # ML pipeline components
-│   │   ├── data_ingestion.py
-│   │   ├── data_transformation.py
-│   │   └── model_trainer.py
-│   │
-│   ├── pipeline/               # Training & prediction pipelines
-│   │   ├── train_pipeline.py
-│   │   └── predict_pipeline.py
-│   │
-│   ├── utils.py
-│   ├── logger.py
-│   └── exception.py
-│
-├── templates/
-│   └── home.html               # Web UI
-│
-├── app.py                      # Flask app entry point
-├── Dockerfile                  # Docker configuration
-├── requirements.txt            # Inference dependencies
-├── requirements-train.txt      # Training dependencies
-├── setup.py
-└── README.md
-
 
 ⚙️ Tech Stack
-🧪 Machine Learning
+
+Machine Learning
 Python
 Pandas
 NumPy
@@ -68,6 +40,7 @@ CatBoost
 XGBoost
 
 🌐 Backend & Deployment
+
 Flask
 Gunicorn
 Docker
@@ -80,6 +53,7 @@ Seaborn
 Jupyter Notebook
 
 🧩 ML Pipeline Details
+
 1️⃣ Data Ingestion
 Loads raw dataset
 Splits into train/test sets
@@ -126,22 +100,4 @@ Cold start supported
 Live URL:
 👉 https://student-performance-predictor-ephw.onrender.com 
 
-🎯 Key Highlights
-✔ End-to-end ML lifecycle
-✔ Clean, modular project structure
-✔ Separate training & inference dependencies
-✔ Docker + cloud deployment
-✔ Production-ready Flask app
-✔ Resume & portfolio worthy
 
-📌 Future Improvements
-Add CI/CD pipeline
-Model versioning
-Logging predictions
-Authentication
-Database integration
-
-👩‍💻 Author
-Simi Kumari
-📧 simikumari571@gmail.com
-🔗 GitHub: https://github.com/Simi268
